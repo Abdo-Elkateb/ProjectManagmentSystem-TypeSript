@@ -12,6 +12,7 @@ type AuthInputs = {
   password: string;
 };
 
+
 export default function Login() {
   const [showPass, setShowPass] = useState(false);
   const [loading, setLoading] = useState(false);
@@ -58,12 +59,12 @@ export default function Login() {
       <div className={styles.authContainer}>
         <div className={`container-fluid`}>
           <div
-            className={`row vh-100 justify-content-center align-items-center`}
+            className={`row vh-100 justify-content-center align-items-center overflow-hidden`}
           >
-            <div className={`col-md-5 bg-inf`}>
+            <div className={`col-lg-6 col-md-8 col-sm-8 bg-inf`}>
               <div className={styles.login}>
                 <div className={`text-center pb-2`}>
-                  <img src={logo} className={`w-25`} alt="" />
+                  <img src={logo} className={`w-50 mb-3`} alt="" />
                 </div>
                 <div className={`${styles.content} p-5`}>
                   <div className={`mb-5`}>
@@ -96,7 +97,7 @@ export default function Login() {
                         />
                       </div>
                       {errors.email && (
-                        <p className="text-warning mt-1">
+                <p className="alert alert-danger mt-2">
                           {(errors.email as FieldError).message}
                         </p>
                       )}
@@ -134,7 +135,7 @@ export default function Login() {
                         </div>
                       </div>
                       {errors.password && (
-                        <p className="text-warning mt-1">
+                        <p className="text-warning mt-2">
                           {(errors.password as FieldError).message}
                         </p>
                       )}
@@ -159,7 +160,7 @@ export default function Login() {
                     <button
                       disabled={loading}
                       className={`btn ${styles.btn_main}`}
-                    >
+                       >
                       {loading ? (
                         <i className="fa-solid fa-spinner fa-spin"></i>
                       ) : (

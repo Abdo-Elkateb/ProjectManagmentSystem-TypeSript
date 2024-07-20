@@ -30,14 +30,14 @@ export default function ToastContextProvider({
     message: string
   ) => {
     return toast[type](message, {
-      position: "bottom-right",
+      position: "top-right",
       autoClose: 3000,
       hideProgressBar: false,
       closeOnClick: true,
       pauseOnHover: true,
       draggable: true,
       progress: undefined,
-      theme: "dark",
+      theme: "light",
       transition: Bounce,
     });
   };

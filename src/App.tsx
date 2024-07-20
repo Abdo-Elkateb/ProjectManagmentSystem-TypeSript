@@ -1,6 +1,6 @@
 import "./App.css";
 import React from "react";
-import { RouterProvider, createBrowserRouter} from "react-router-dom";
+import { RouterProvider, createBrowserRouter, useLocation} from "react-router-dom";
 import NotFound from "./Modules/SharedModule/components/NotFound/NotFound";
 import Login from "./Modules/AuthenticationModule/components/Login/Login";
 import AuthLayout from "./Modules/SharedModule/components/AuthLayout/AuthLayout";
@@ -19,9 +19,13 @@ import "react-toastify/dist/ReactToastify.css";
 import ProjectsData from "./Modules/ProjectsModule/components/ProjectsData/ProjectsData";
 import TasksData from "./Modules/TasksModule/components/TasksData/TasksData";
 import TaskBoard from "./Modules/TasksModule/components/TaskBoard/TaskBoard";
+import { AnimatePresence } from "framer-motion";
 
 function App() {
+  const location = useLocation();
+
   const routes = createBrowserRouter([
+    
     {
       path: "/",
       element: <AuthLayout />,
@@ -58,10 +62,13 @@ function App() {
   ]);
 
   return (
+    <AnimatePresence exitBeforeEnter>
     <div className="App">
       <ToastContainer />
-      <RouterProvider router={routes} />
+      <RouterProvider key={location.pathname} location={location} router={routes} />
     </div>
+    </AnimatePresence>
+
   );
 }
 

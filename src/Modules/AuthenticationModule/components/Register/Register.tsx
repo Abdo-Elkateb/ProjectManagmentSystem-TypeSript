@@ -66,10 +66,10 @@ getToast("success","Registerd Successfully" );
     <>
       <div className={` ${Styles.authcontainer}  `}>
         <div className="container-fluid bg-blac">
-          <div className="row d-flex justify-content-center vh-100 align-items-center bg-dange  ">
+          <div className="row d-flex justify-content-center align-items-center bg-dange ">
             <div className="col-md-7 bg-warnin ">
               <div className="text-center">
-                <img className="" src={logo} alt="" />
+                <img className="mt-4 mb-3" src={logo} alt="" />
               </div>
               <div className={`  ${Styles.bgFormContainer} p-4 px-5 pt-5 `}>
                 <h6 className="text-white">welcome to PMS</h6>
@@ -119,7 +119,7 @@ getToast("success","Registerd Successfully" );
                           })}
                         />
                       </div>
-                      {errors.userName && <p className='text-warning mt-1'>{(errors.userName as FieldError).message}</p>}
+                      {errors.userName && <p className='alert alert-danger mt-2'>{(errors.userName as FieldError).message}</p>}
                     </div>
                     <div className="col md-6">
                       <label className={`${Styles.textGold}`}>E-mail</label>
@@ -133,7 +133,7 @@ getToast("success","Registerd Successfully" );
                           })}
                         />
                       </div>
-                      {errors.email && <p className='text-warning mt-1'>{(errors.email as FieldError).message}</p>}
+                      {errors.email && <p className='alert alert-danger mt-2'>{(errors.email as FieldError).message}</p>}
                     </div>
                     <div className="col-md-6">
                       <label className={`${Styles.textGold}`}>Country</label>
@@ -147,7 +147,7 @@ getToast("success","Registerd Successfully" );
                           })}
                         />
                       </div>
-                      {errors.country && <p className='text-warning mt-1'>{(errors.country as FieldError).message}</p>}
+                      {errors.country && <p className='alert alert-danger mt-2'>{(errors.country as FieldError).message}</p>}
                     </div>
                     <div className="col md-6">
                       <label className={`${Styles.textGold}`}>
@@ -163,7 +163,7 @@ getToast("success","Registerd Successfully" );
                           })}
                         />
                       </div>
-                      {errors.phoneNumber && <p className='text-warning mt-1'>{(errors.phoneNumber as FieldError).message}</p>}
+                      {errors.phoneNumber && <p className='alert alert-danger mt-2'>{(errors.phoneNumber as FieldError).message}</p>}
                     </div>
                     <div className="col-md-6">
                       <label className={`${Styles.textGold}`}>Password</label>
@@ -189,7 +189,7 @@ getToast("success","Registerd Successfully" );
                           )}
                         </span>
                       </div>
-                      {errors.password && <p className='text-warning mt-1'>{(errors.password as FieldError).message}</p>}
+                      {errors.password && <p className='alert alert-danger mt-2'>{(errors.password as FieldError).message}</p>}
                     </div>
                     <div className="col md-6">
                       <label className={`${Styles.textGold}`}>
@@ -218,7 +218,7 @@ getToast("success","Registerd Successfully" );
                           )}
                         </span>
                       </div>
-                      {errors.confirmPassword && <p className='text-warning mt-1'>{(errors.confirmPassword as FieldError).message}</p>}
+                      {errors.confirmPassword && <p className='alert alert-danger mt-2'>{(errors.confirmPassword as FieldError).message}</p>}
                     </div>
                   </div>
                   <div className="text-center">
