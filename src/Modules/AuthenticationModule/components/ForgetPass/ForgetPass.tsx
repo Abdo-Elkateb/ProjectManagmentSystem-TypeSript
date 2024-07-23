@@ -8,7 +8,7 @@ import 'react-toastify/dist/ReactToastify.css';
 
 type AuthInputs = {
   email: string;
-  code : string;n
+  code : string;
 };
 export default function ForgetPass() {
   const navigate = useNavigate()
@@ -67,8 +67,6 @@ export default function ForgetPass() {
         </div>
 
       </div>
-
-
 
     </div>
   )
