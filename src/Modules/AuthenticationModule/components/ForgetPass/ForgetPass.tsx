@@ -65,11 +65,7 @@ export default function ForgetPass() {
             </form>
           </div>
         </div>
-
       </div>
-
-
-
     </div>
   )
 }
