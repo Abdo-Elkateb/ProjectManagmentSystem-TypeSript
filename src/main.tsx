@@ -8,12 +8,16 @@ import "@fontsource/inter";
 import "./index.css";
 import AuthContextProvider from "./Modules/Context/AuthContext.tsx";
 import ToastContextProvider from "./Modules/Context/ToastContext.tsx";
+import { BrowserRouter } from "react-router-dom";
 
 ReactDOM.createRoot(document.getElementById("root")!).render(
   <React.StrictMode>
     <ToastContextProvider>
       <AuthContextProvider>
-        <App />
+        <BrowserRouter>
+          <App />
+        </BrowserRouter>
+      
       </AuthContextProvider>
     </ToastContextProvider>
   </React.StrictMode>
