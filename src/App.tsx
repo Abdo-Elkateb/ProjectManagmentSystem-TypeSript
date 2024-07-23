@@ -1,6 +1,6 @@
 import "./App.css";
 import React from "react";
-import { RouterProvider, createBrowserRouter} from "react-router-dom";
+import { RouterProvider, createBrowserRouter, useLocation, useRoutes} from "react-router-dom";
 import NotFound from "./Modules/SharedModule/components/NotFound/NotFound";
 import Login from "./Modules/AuthenticationModule/components/Login/Login";
 import AuthLayout from "./Modules/SharedModule/components/AuthLayout/AuthLayout";
@@ -19,9 +19,15 @@ import "react-toastify/dist/ReactToastify.css";
 import ProjectsData from "./Modules/ProjectsModule/components/ProjectsData/ProjectsData";
 import TasksData from "./Modules/TasksModule/components/TasksData/TasksData";
 import TaskBoard from "./Modules/TasksModule/components/TaskBoard/TaskBoard";
+import { AnimatePresence } from "framer-motion";
+
+
 
 function App() {
-  const routes = createBrowserRouter([
+  // const location = useLocation();
+
+  const element = useRoutes([
+    
     {
       path: "/",
       element: <AuthLayout />,
@@ -57,11 +63,20 @@ function App() {
     },
   ]);
 
+  const location = useLocation();
+
+  if (!element) return null;
+
   return (
+    // <AnimatePresence exitBeforeEnter>
     <div className="App">
       <ToastContainer />
-      <RouterProvider router={routes} />
+     <AnimatePresence mode="wait">
+      {React.cloneElement(element, { key: location.pathname })}
+    </AnimatePresence>
     </div>
+    // </AnimatePresence>
+
   );
 }
 

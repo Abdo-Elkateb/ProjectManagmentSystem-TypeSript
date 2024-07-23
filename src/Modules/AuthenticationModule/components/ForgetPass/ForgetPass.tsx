@@ -5,6 +5,8 @@ import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import { motion } from 'framer-motion'
+import  styles from './ForgetPass.module.css'
 
 type AuthInputs = {
   email: string;
@@ -32,6 +34,16 @@ export default function ForgetPass() {
 
   }
   return (
+    <motion.dev
+  className={styles.sideIn}
+  initil={{scaleyY:0}}
+  animate={{scaleyY:0}}
+  exit={{scaleyY:1}}
+  transition={{duration:1, ease:[0.22,1,0,36,1]}}
+  
+  >
+    
+
     <div className='auth-container'>
       <div className='container-fluid'>
         <div className="row d-flex vh-100 justify-content-center align-items-center">
@@ -71,5 +83,6 @@ export default function ForgetPass() {
 
 
     </div>
+      </motion.dev>
   )
 }
