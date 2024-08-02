@@ -7,6 +7,7 @@ import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { motion } from 'framer-motion'
 import  styles from './ForgetPass.module.css'
+import AnimatedPage from '../../../AnimatedPage/AnimatedPage';
 
 type AuthInputs = {
   email: string;
@@ -34,14 +35,7 @@ export default function ForgetPass() {
 
   }
   return (
-    <motion.dev
-  className={styles.sideIn}
-  initil={{scaleyY:0}}
-  animate={{scaleyY:0}}
-  exit={{scaleyY:1}}
-  transition={{duration:1, ease:[0.22,1,0,36,1]}}
-  
-  >
+
     
 
     <div className='auth-container'>
@@ -51,8 +45,8 @@ export default function ForgetPass() {
             <div className="forgot text-center mb-4">
               <img src={logo} alt="logo" className='w-25' />
             </div>
-
-            <form action="#" onSubmit={handleSubmit(onSubmit)} className='form-auth' style={{ padding: "80px 60px" }}>
+            <AnimatedPage>
+         <form action="#" onSubmit={handleSubmit(onSubmit)} className='form-auth' style={{ padding: "80px 60px" }}>
               <h1 className='auth-title'>Forget Password</h1>
               <span className='e-mail'>E-mail</span> <br />
               <div className='auth-standard-basic'>
@@ -75,14 +69,14 @@ export default function ForgetPass() {
                 <button className="btn btn-warning verify">Verify</button>
               </div>
             </form>
+            </AnimatedPage>
+
+   
           </div>
         </div>
 
       </div>
 
-
-
     </div>
-      </motion.dev>
   )
 }

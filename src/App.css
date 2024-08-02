@@ -59,12 +59,9 @@
     bottom: 0px;
     left: 0;
 }
-
 .form-auth .e-mail {
     color: rgba(239, 155, 40, 1);
-
 }
-
 .form-auth .verify {
     width: 80%;
     padding: 15px 0;
@@ -80,12 +77,10 @@
     -o-border-radius: 96px;
 }
 
-
 .alert-danger {
     font-size: 12px;
     height: 5px;
     line-height: 5px;
-
 }
 
 .icon {

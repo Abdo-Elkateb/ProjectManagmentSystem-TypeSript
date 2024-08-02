@@ -1,6 +1,6 @@
 import "./App.css";
 import React from "react";
-import { RouterProvider, createBrowserRouter, useLocation, useRoutes} from "react-router-dom";
+import { BrowserRouter, Route, RouterProvider, Routes, createBrowserRouter, useLocation } from "react-router-dom";
 import NotFound from "./Modules/SharedModule/components/NotFound/NotFound";
 import Login from "./Modules/AuthenticationModule/components/Login/Login";
 import AuthLayout from "./Modules/SharedModule/components/AuthLayout/AuthLayout";
@@ -19,65 +19,74 @@ import "react-toastify/dist/ReactToastify.css";
 import ProjectsData from "./Modules/ProjectsModule/components/ProjectsData/ProjectsData";
 import TasksData from "./Modules/TasksModule/components/TasksData/TasksData";
 import TaskBoard from "./Modules/TasksModule/components/TaskBoard/TaskBoard";
+import AuthContextProvider from "./Modules/Context/AuthContext";
 import { AnimatePresence } from "framer-motion";
-
+import RouterApp from "./Modules/AuthenticationModule/RouterSinglePageApp/RouterApp";
 
 
 function App() {
-  // const location = useLocation();
+  const location = useLocation()
+  // const routes = createBrowserRouter([
+  //   {
+  //     path: "/",
+  //     element: <AuthLayout />,
+  //     errorElement: <NotFound />,
+  //     children: [
+  //       { path: "", element: <Login /> },
+  //       { path: "login", element: <Login /> },
+  //       { path: "register", element: <Register /> },
+  //       { path: "forgetpass", element: <ForgetPass /> },
+  //       { path: "resetpass", element: <ResetPass /> },
+  //       { path: "verify", element: <VerifyAccount /> },
+  //     ],
+  //   },
+  //   {
+  //     path: "DashBoard",
+  //     element: (
 
-  const element = useRoutes([
-    
-    {
-      path: "/",
-      element: <AuthLayout />,
-      errorElement: <NotFound />,
-      children: [
-        { path: "", element: <Login /> },
-        { path: "login", element: <Login /> },
-        { path: "register", element: <Register /> },
-        { path: "forgetpass", element: <ForgetPass /> },
-        { path: "resetpass", element: <ResetPass /> },
-        { path: "verify", element: <VerifyAccount /> },
-      ],
-    },
-    {
-      path: "DashBoard",
-      element: (
-        <ProtectedRoute>
-          <MasterLayout />
-        </ProtectedRoute>
-      ),
-      errorElement: <NotFound />,
-      children: [
-        { path: "", element: <Dashboard /> },
-        { path: "projects", element: <ProjectsList /> },
-        { path: "projectsdata", element: <ProjectsData /> },
-        { path: "projectsdata/:id", element: <ProjectsData /> }, // Add this route
-        { path: "tasks", element: <TasksList /> },
-        { path: "tasksdata", element: <TasksData /> },
-        { path: "tasksedit/:id", element: <TasksData /> },
-        { path: "users", element: <UsersList /> },
-        { path: "taskboard", element: <TaskBoard /> },
-      ],
-    },
-  ]);
+  //       <ProtectedRoute>
+  //         <MasterLayout />
+  //       </ProtectedRoute>
+  //     ),
+  //     errorElement: <NotFound />,
+  //     children: [
+  //       { path: "", element: <Dashboard /> },
+  //       { path: "projects", element: <ProjectsList /> },
+  //       { path: "projectsdata", element: <ProjectsData /> },
+  //       { path: "projectsdata/:id", element: <ProjectsData /> },
+  //       { path: "tasks", element: <TasksList /> },
+  //       { path: "tasksdata", element: <TasksData /> },
+  //       { path: "tasksedit/:id", element: <TasksData /> },
+  //       { path: "users", element: <UsersList /> },
+  //       { path: "taskboard", element: <TaskBoard /> },
+  //     ],
+  //   },
+  // ]);
 
-  const location = useLocation();
 
-  if (!element) return null;
+
+
+  // if (!element) return null;
 
   return (
+
+
+
     // <AnimatePresence exitBeforeEnter>
-    <div className="App">
-      <ToastContainer />
-     <AnimatePresence mode="wait">
-      {React.cloneElement(element, { key: location.pathname })}
-    </AnimatePresence>
-    </div>
+    <AuthContextProvider>
+      <div className="App">
+        <ToastContainer />
+        <AnimatePresence>
+          <RouterApp/>
+        </AnimatePresence>
+
+
+      </div>
+    </AuthContextProvider>
     // </AnimatePresence>
 
-  );
+  )
 }
+
 
 export default App;
