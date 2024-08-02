@@ -58,6 +58,11 @@ export default function Login() {
 
   return (
 
+<<<<<<< HEAD
+=======
+
+
+>>>>>>> ffcefa1 (Done)
    <div className={styles.authContainer}>
         <div className={`container-fluid`}>
           <div
@@ -179,6 +184,11 @@ export default function Login() {
           </div>
         </div>
       </div>
+<<<<<<< HEAD
 
+=======
+ 
+   
+>>>>>>> ffcefa1 (Done)
   );
 }
