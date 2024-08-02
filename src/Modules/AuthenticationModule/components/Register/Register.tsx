@@ -235,7 +235,6 @@ getToast("success","Registerd Successfully" );
           </div>
         </div>
       </div>
-    </AnimatedPage>
   
     </>
   );
