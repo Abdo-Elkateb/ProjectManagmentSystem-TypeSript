@@ -1,4 +1,4 @@
-.sideIn {
+.SideIn {
     position: fixed;
     top:0;
     left: 0;
@@ -7,7 +7,7 @@
     background: #0f0f0f;
     transform-origin: bottom;
 }
-.slideOut {
+.SlideOut {
     position: fixed;
     top: 0;
     left: 0;

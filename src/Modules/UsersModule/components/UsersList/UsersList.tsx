@@ -54,6 +54,8 @@ export default function UsersList() {
           }
         }
       );
+      
+      console.log("this is a response", response)
       setUsersList(response.data.data);
       console.log(response.data.data);
       setArrayOfPages(Array.from({ length: response.data.totalNumberOfPages }, (_, i) => i + 1));
