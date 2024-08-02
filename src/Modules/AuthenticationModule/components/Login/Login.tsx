@@ -58,7 +58,11 @@ export default function Login() {
 
   return (
 
+<<<<<<< HEAD
 
+=======
+  <AnimatedPage>
+>>>>>>> 2b6ae16 (Fixed some problems that come from authentication, responsiveness, login, forgot password, reset, registration, and validation.)
 
    <div className={styles.authContainer}>
         <div className={`container-fluid`}>
@@ -182,6 +186,11 @@ export default function Login() {
         </div>
       </div>
  
+<<<<<<< HEAD
+=======
+
+ </AnimatedPage>
+>>>>>>> 2b6ae16 (Fixed some problems that come from authentication, responsiveness, login, forgot password, reset, registration, and validation.)
    
   );
 }
