@@ -65,7 +65,7 @@ getToast("success","Registerd Successfully" );
 
   return (
     <>
-    <AnimatedPage>
+   
     <div className={` ${Styles.authcontainer}  `}>
         <div className="container-fluid bg-blac">
           <div className="row d-flex justify-content-center align-items-center bg-dange ">
@@ -73,7 +73,8 @@ getToast("success","Registerd Successfully" );
               <div className="text-center">
                 <img className="mt-4 mb-3" src={logo} alt="" />
               </div>
-              <div className={`  ${Styles.bgFormContainer} p-4 px-5 pt-5 `}>
+              <AnimatedPage>
+            <div className={`  ${Styles.bgFormContainer} p-4 px-5 pt-5 `}>
                 <h6 className="text-white">welcome to PMS</h6>
                 <h2 className={`${Styles.textGold}`}>
                   <span className="text-decoration-underline">C</span>reate New
@@ -230,12 +231,11 @@ getToast("success","Registerd Successfully" );
                   </div>
                 </form>
               </div>
+              </AnimatedPage>
             </div>
           </div>
         </div>
       </div>
-    </AnimatedPage>
-  
     </>
   );
 }

@@ -58,7 +58,7 @@ export default function Login() {
 
   return (
 
-  <AnimatedPage>
+
 
    <div className={styles.authContainer}>
         <div className={`container-fluid`}>
@@ -70,7 +70,8 @@ export default function Login() {
                 <div className={`text-center pb-2`}>
                   <img src={logo} className={`w-50 mb-3`} alt="" />
                 </div>
-                <div className={`${styles.content} p-5`}>
+                <AnimatedPage>
+      <div className={`${styles.content} p-5`}>
                   <div className={`mb-5`}>
                     <p>Welcome to PMS</p>
                     <h4>Login</h4>
@@ -173,14 +174,14 @@ export default function Login() {
                     </button>
                   </form>
                 </div>
+                </AnimatedPage>
+          
               </div>
             </div>
           </div>
         </div>
       </div>
  
-
- </AnimatedPage>
    
   );
 }

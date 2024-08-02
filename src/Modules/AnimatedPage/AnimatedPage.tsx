@@ -24,13 +24,12 @@ const animations = {
       initial="initial"
       animate="animate"
       exit="exit"
-      transition={{ duration: .5 }}
+      transition={{ duration: 1 }}
     >
       {children}
     </motion.div>
   );
 }
-
 export default AnimatedPage
 
 
