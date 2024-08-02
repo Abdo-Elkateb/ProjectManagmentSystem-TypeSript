@@ -6,6 +6,8 @@ import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
 import { useAuth } from "../../../Context/AuthContext";
 import { useToast } from "../../../Context/ToastContext";
+import AnimatedPage from "../../../AnimatedPage/AnimatedPage";
+import Transition from "../../../Tramsition/Transition";
 
 type AuthInputs = {
   email: string;
@@ -55,8 +57,10 @@ export default function Login() {
   }, []);
 
   return (
-    <>
-      <div className={styles.authContainer}>
+
+  <AnimatedPage>
+
+   <div className={styles.authContainer}>
         <div className={`container-fluid`}>
           <div
             className={`row vh-100 justify-content-center align-items-center overflow-hidden`}
@@ -174,6 +178,9 @@ export default function Login() {
           </div>
         </div>
       </div>
-    </>
+ 
+
+ </AnimatedPage>
+   
   );
 }

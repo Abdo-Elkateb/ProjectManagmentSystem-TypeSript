@@ -7,6 +7,7 @@ import Styles from "./Register.module.css";
 
 import img from "../../../..//assets/images/8550fbcbe60cd242d12760784feff287.jpeg";
 import { useToast } from "../../../Context/ToastContext";
+import AnimatedPage from "../../../AnimatedPage/AnimatedPage";
 
 interface IFormInput {
   userName: string;
@@ -64,7 +65,8 @@ getToast("success","Registerd Successfully" );
 
   return (
     <>
-      <div className={` ${Styles.authcontainer}  `}>
+    <AnimatedPage>
+    <div className={` ${Styles.authcontainer}  `}>
         <div className="container-fluid bg-blac">
           <div className="row d-flex justify-content-center align-items-center bg-dange ">
             <div className="col-md-7 bg-warnin ">
@@ -232,6 +234,8 @@ getToast("success","Registerd Successfully" );
           </div>
         </div>
       </div>
+    </AnimatedPage>
+  
     </>
   );
 }
