@@ -58,8 +58,6 @@ export default function Login() {
 
   return (
 
-
-
    <div className={styles.authContainer}>
         <div className={`container-fluid`}>
           <div
@@ -181,7 +179,6 @@ export default function Login() {
           </div>
         </div>
       </div>
- 
-   
+
   );
 }

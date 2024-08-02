@@ -15,19 +15,21 @@ const animations = {
     exit: { opacity: 0, x: -100 },
 }
 
-export default function AnimatedPage({ childern }: Props) {
-    return (
-
-        <motion.dev 
-        variants={animations}
-         initial="initial"
-          animate="animate"
-           exit="exit"
-           >
-    { childern }
-
-
-        </motion.dev >
-
-    )
+ const AnimatedPage = ({ children }: Props)=> {
+  return (
+    <motion.div
+      variants={animations}
+      initial="initial"
+      animate="animate"
+      exit="exit"
+      transition={{ duration: 1 }}
+    >
+      {children}
+    </motion.div>
+  );
 }
+export default AnimatedPage
+
+
+
+
