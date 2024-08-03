@@ -167,7 +167,7 @@ export default function Login() {
                       {loading ? (
                         <i className="fa-solid fa-spinner fa-spin"></i>
                       ) : (
-                        "Login"
+                         "Login"
                       )}
                     </button>
                   </form>
