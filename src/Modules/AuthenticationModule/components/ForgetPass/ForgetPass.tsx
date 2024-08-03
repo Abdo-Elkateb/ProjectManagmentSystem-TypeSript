@@ -75,10 +75,6 @@ export default function ForgetPass() {
           </div>
         </div>
       </div>
-<<<<<<< HEAD
-=======
-
->>>>>>> 19dd7fe1d20c4dd80ab0f68635a77060404e7f20
     </div>
   )
 }
