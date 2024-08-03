@@ -10,18 +10,19 @@
   color: #fff;
 }
 
-.content p {
+.contentP {
   margin: 0;
   font-size: 13px;
+  color:#fff;
 }
 
-.content h4 {
+.contentHeader {
   font-size: 30px;
   color: #ef9b28;
   position: relative;
 }
 
-.content h4::before {
+.contentHeader::before {
   content: "";
   height: 3px;
   width: 13px;

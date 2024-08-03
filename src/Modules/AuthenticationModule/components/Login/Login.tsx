@@ -58,21 +58,21 @@ export default function Login() {
 
   return (
 
-   <div className={styles.authContainer}>
-        <div className={`container-fluid`}>
-          <div
-            className={`row vh-100 justify-content-center align-items-center overflow-hidden`}
-          >
-            <div className={`col-lg-6 col-md-8 col-sm-8 bg-inf`}>
-              <div className={styles.login}>
-                <div className={`text-center pb-2`}>
-                  <img src={logo} className={`w-50 mb-3`} alt="" />
-                </div>
-                <AnimatedPage>
-      <div className={`${styles.content} p-5`}>
-                  <div className={`mb-5`}>
-                    <p>Welcome to PMS</p>
-                    <h4>Login</h4>
+    <div className={styles.authContainer}>
+      <div className={`container-fluid`}>
+        <div
+          className={`row vh-100 justify-content-center align-items-center overflow-hidden`}
+        >
+          <div className={`col-lg-6 col-md-8 col-sm-8 bg-inf`}>
+            <div className={styles.login}>
+              <div className={`text-center pb-2`}>
+                <img src={logo} className={`w-50 mb-3`} alt="" />
+              </div>
+              <AnimatedPage>
+                <div className={`${styles.content} p-5`}>
+                     <div className={`mb-5`}>
+                    <p className={`${styles.contentP}`}>Welcome to PMS</p>
+                    <h4 className={`${styles.contentHeader}`}>Login</h4>
                   </div>
                   <form
                     className="d-flex flex-column gap-3"
@@ -80,9 +80,8 @@ export default function Login() {
                   >
                     <div className="bg-blac">
                       <div
-                        className={`${styles.inputContainer} ${
-                          errors.email && styles.inputError
-                        }`}
+                        className={`${styles.inputContainer} ${errors.email && styles.inputError
+                          }`}
                       >
                         <label htmlFor="email">E-mail</label>
                         <input
@@ -100,7 +99,7 @@ export default function Login() {
                         />
                       </div>
                       {errors.email && (
-                <p className="alert alert-danger mt-2">
+                        <p className="alert alert-danger mt-2">
                           {(errors.email as FieldError).message}
                         </p>
                       )}
@@ -108,9 +107,8 @@ export default function Login() {
 
                     <div className="bg-inf">
                       <div
-                        className={`${styles.inputContainer} ${
-                          errors.email && styles.inputError
-                        }`}
+                        className={`${styles.inputContainer} ${errors.email && styles.inputError
+                          }`}
                       >
                         <label htmlFor="password">Password</label>
                         <div className="d-flex align-items-center">
@@ -130,9 +128,8 @@ export default function Login() {
                             className={styles.inputLogin}
                           />
                           <i
-                            className={`fa-regular ${
-                              showPass ? "fa-eye" : "fa-eye-slash"
-                            } ${styles.showPass}`}
+                            className={`fa-regular ${showPass ? "fa-eye" : "fa-eye-slash"
+                              } ${styles.showPass}`}
                             onClick={() => setShowPass(!showPass)}
                           ></i>
                         </div>
@@ -163,7 +160,7 @@ export default function Login() {
                     <button
                       disabled={loading}
                       className={`btn ${styles.btn_main}`}
-                       >
+                    >
                       {loading ? (
                         <i className="fa-solid fa-spinner fa-spin"></i>
                       ) : (
@@ -172,13 +169,13 @@ export default function Login() {
                     </button>
                   </form>
                 </div>
-                </AnimatedPage>
-          
-              </div>
+              </AnimatedPage>
+
             </div>
           </div>
         </div>
       </div>
+    </div>
 
   );
 }

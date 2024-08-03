@@ -9,6 +9,8 @@ import { motion } from 'framer-motion'
 import  styles from './ForgetPass.module.css'
 import AnimatedPage from '../../../AnimatedPage/AnimatedPage';
 
+
+
 type AuthInputs = {
   email: string;
   code : string;
@@ -43,7 +45,7 @@ export default function ForgetPass() {
         <div className="row d-flex vh-100 justify-content-center align-items-center">
           <div className="col-md-6">
             <div className="forgot text-center mb-4">
-              <img src={logo} alt="logo" className='w-25' />
+                  <img src={logo} className={`w-50 mb-3`} alt="" />
             </div>
             <AnimatedPage>
          <form action="#" onSubmit={handleSubmit(onSubmit)} className='form-auth' style={{ padding: "80px 60px" }}>
@@ -75,10 +77,6 @@ export default function ForgetPass() {
           </div>
         </div>
       </div>
-<<<<<<< HEAD
-=======
-
->>>>>>> 19dd7fe1d20c4dd80ab0f68635a77060404e7f20
     </div>
   )
 }

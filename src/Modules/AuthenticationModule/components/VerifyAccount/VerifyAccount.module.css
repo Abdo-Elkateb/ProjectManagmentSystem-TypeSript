@@ -1,6 +1,10 @@
 .authcontainer {
     background-image: url("/src/assets/images/bg1.png");
     background-size: cover;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
 }
 
 .input {
@@ -8,6 +12,7 @@
     border-bottom: .3px white solid !important;
     border: none;
     outline: none !important;
+    
 
 }
 
