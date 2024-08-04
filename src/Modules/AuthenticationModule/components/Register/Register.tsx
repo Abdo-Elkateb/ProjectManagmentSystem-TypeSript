@@ -65,12 +65,7 @@ getToast("success","Registerd Successfully" );
 
   return (
     <>
-<<<<<<< HEAD
       <div className={` ${Styles.authcontainer}  `}>
-=======
-   
-    <div className={` ${Styles.authcontainer}  `}>
->>>>>>> ffcefa1 (Done)
         <div className="container-fluid bg-blac">
           <div className="row d-flex justify-content-center align-items-center bg-dange ">
             <div className="col-md-7 bg-warnin ">
@@ -240,10 +235,7 @@ getToast("success","Registerd Successfully" );
           </div>
         </div>
       </div>
-<<<<<<< HEAD
   
-=======
->>>>>>> ffcefa1 (Done)
     </>
   );
 }
