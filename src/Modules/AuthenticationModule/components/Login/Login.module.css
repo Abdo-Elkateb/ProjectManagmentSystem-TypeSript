@@ -2,21 +2,21 @@
   background-image: url(../../../../assets/images/bg3.png);
   background-size: cover;
   background-position: center;
+    height: 100vh;
+      overflow: scroll;
 }
 
 .content {
-  background-color: #315951e5;
-  border-radius: 5px;
-  color: #fff;
+  background-color: rgba(49, 89, 81, 0.692);
+  border-radius: 16px;
+  -webkit-border-radius: 16px;
+  -moz-border-radius: 16px;
+  -ms-border-radius: 16px;
+  -o-border-radius: 16px;
 }
 
-.content p {
-  margin: 0;
-  font-size: 13px;
-}
 
 .content h4 {
-  font-size: 30px;
   color: #ef9b28;
   position: relative;
 }

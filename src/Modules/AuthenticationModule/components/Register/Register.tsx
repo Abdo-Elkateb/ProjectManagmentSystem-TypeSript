@@ -1,10 +1,10 @@
 import axios from "axios";
 import React, { useRef, useState } from "react";
-import { useForm ,SubmitHandler, FieldError} from "react-hook-form";
+import { useForm, SubmitHandler, FieldError } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
 import logo from "../../../../assets/images/PMS 3.png";
 import Styles from "./Register.module.css";
-
+import styles from "../Login/Login.module.css";
 import img from "../../../..//assets/images/8550fbcbe60cd242d12760784feff287.jpeg";
 import { useToast } from "../../../Context/ToastContext";
 import AnimatedPage from "../../../AnimatedPage/AnimatedPage";
@@ -20,7 +20,9 @@ interface IFormInput {
 }
 
 export default function Register() {
-  const [visible, setVisible] = useState(false);
+  const [visiblePassword, setVisiblePassword] = useState(false);
+  const [visiblePasswordConfirm, setVisiblePasswordConfirm] = useState(false);
+  const [loading, setLoading] = useState(false);
   const { getToast } = useToast();
   const navigate = useNavigate();
   let {
@@ -29,11 +31,10 @@ export default function Register() {
     formState: { errors },
     watch,
   } = useForm<IFormInput>();
-  // const imgValue = watch();
   const imgValue = watch("profileImage");
   const password = useRef({});
   password.current = watch("password", "");
-  const appendToFormData = (data: any) => {
+  const appendToFormData = (data: IFormInput) => {
     const formData = new FormData();
     formData.append("userName", data.userName);
     formData.append("email", data.email);
@@ -44,7 +45,9 @@ export default function Register() {
     formData.append("confirmPassword", data.confirmPassword);
     return formData;
   };
-  const onSubmit: SubmitHandler<IFormInput> = async(data) =>  {
+
+  const onSubmit: SubmitHandler<IFormInput> = async (data) => {
+      setLoading(true);
     try {
       const registerFormData = appendToFormData(data);
 
@@ -52,190 +55,194 @@ export default function Register() {
         "https://upskilling-egypt.com:3003/api/v1/Users/Register",
         registerFormData
       );
+      setLoading(false);
       console.log(response);
-
-getToast("success","Registerd Successfully" );
+      getToast("success", "Registerd Successfully");
       navigate("/verify");
-    } catch (error:any) {
-      
- 
+    } catch (error: any) {
+      setLoading(false);
       getToast("error", error.response.data.message);
     }
   };
-
   return (
     <>
-      <div className={` ${Styles.authcontainer}  `}>
+      <div className={`${Styles.authcontainer}`}>
         <div className="container-fluid bg-blac">
-          <div className="row d-flex justify-content-center align-items-center bg-dange ">
-            <div className="col-md-7 bg-warnin ">
+          <div className="row vh-100 d-flex justify-content-center align-items-center bg-dange">
+            <div className="col-md-7">
               <div className="text-center">
-                <img className="mt-4 mb-3" src={logo} alt="" />
+                <img src={logo} className={`w-50 mb-3`} alt="" />
               </div>
               <AnimatedPage>
-            <div className={`  ${Styles.bgFormContainer} p-4 px-5 pt-5 `}>
-                <h6 className="text-white">welcome to PMS</h6>
-                <h2 className={`${Styles.textGold}`}>
-                  <span className="text-decoration-underline">C</span>reate New
-                  Account
-                </h2>
-                <form onSubmit={handleSubmit(onSubmit)}>
-                  <div className="row py-3">
-                    <div className="text-center">
-                      <label htmlFor="file">
-                        <img
-                          className={`${Styles.profileImg}`}
-                          src={
-                            imgValue && imgValue.length > 0
-                            ? URL.createObjectURL(imgValue[0])
-                            : img
-                          }
-                          alt="profileImg"
+                <div className={`${Styles.bgFormContainer} p-4 px-5 pt-5`}>
+                  <p className="text-white">welcome to PMS</p>
+                  <h4 className={`${Styles.textGold}`}>
+                    <span className="text-decoration-underline">C</span>reate New
+                    Account
+                  </h4>
+                  <form onSubmit={handleSubmit(onSubmit)}>
+                    <div className="row py-3">
+                      <div className="text-center">
+                        <label htmlFor="file">
+                          <img
+                            className={`${Styles.profileImg}`}
+                            src={
+                              imgValue && imgValue.length > 0
+                                ? URL.createObjectURL(imgValue[0])
+                                : img
+                            }
+                            alt="profileImg"
+                          />
+                          <i
+                            className={`fa fa-camera`} ></i>
+                        </label>
+                        <input
+                          type="file"
+                          className={`${Styles.file} `}
+                          id="file"
+                          {...register("profileImage", {
+                            required: "profileImage is required",
+                          })}
                         />
+                      </div>
+                      {errors.profileImage && <p className='text-warning text-center mt-1'>{(errors.profileImage as FieldError).message}</p>}
+                      <div className="col-md-6">
+                        <label className={`${Styles.textGold}`}>Username</label>
+                        <div>
+                          <input
+                            type="text"
+                            className={`${Styles.input} p-1 text-white w-100`}
+                            placeholder="Enter your name"
+                            {...register("userName", {
+                              required: "Username is required",
+                            })}
+                          />
+                        </div>
+                        {errors.userName && <p className='alert alert-danger mt-2'>{(errors.userName as FieldError).message}</p>}
+                      </div>
+                      <div className="col md-6">
+                        <label className={`${Styles.textGold}`}>E-mail</label>
+                        <div>
+                          <input
+                            type="text"
+                            className={`${Styles.input} p-1 text-white w-100`}
+                            placeholder="Enter your email"
+                            {...register("email", {
+                              required: "*Email is required",
+                              pattern: {
+                                value: /^[^@]+@[^@]+\.[^@.]{2,}$/,
+                                message: "Invaild mail",
+                              },
+                            })}
+                          />
+                        </div>
+                        {errors.email && <p className='alert alert-danger mt-2'>{(errors.email as FieldError).message}</p>}
+                      </div>
+                      <div className="col-md-6">
+                        <label className={`${Styles.textGold}`}>Country</label>
+                        <div>
+                          <input
+                            type="text"
+                            className={`${Styles.input} p-1 text-white w-100`}
+                            placeholder="Enter your Country"
+                            {...register("country", {
+                              required: "country is required",
+                            })}
+                          />
+                        </div>
+                        {errors.country && <p className='alert alert-danger mt-2'>{(errors.country as FieldError).message}</p>}
+                      </div>
+                      <div className="col md-6">
+                        <label className={`${Styles.textGold}`}>
+                          Phone Number
+                        </label>
+                        <div>
+                          <input
+                            type="number"
+                            className={`${Styles.input} p-1 text-white w-100`}
+                            placeholder="Enter your Phone Number"
+                            {...register("phoneNumber", {
+                              required: "phoneNumber is required",
+                            })}
+                          />
+                        </div>
+                        {errors.phoneNumber && <p className='alert alert-danger mt-2'>{(errors.phoneNumber as FieldError).message}</p>}
+                      </div>
+                      <div className="col-md-6">
+                        <label className={`${Styles.textGold}`}>Password</label>
 
-                        <i
-                          className={`${
-                            (Styles.profileIcon, Styles.textGold)
-                          } fa fa-camera position-absolute`}
-                        ></i>
-                      </label>
-                      <input
-                        type="file"
-                        className={`${Styles.file} `}
-                        id="file"
-                        {...register("profileImage", {
-                          required: "profileImage is required",
-                        })}
-                      />
-                    </div>
-                    {errors.profileImage && <p className='text-warning text-center mt-1'>{(errors.profileImage as FieldError).message}</p>}
-                    <div className="col-md-6">
-                      <label className={`${Styles.textGold}`}>Username</label>
-                      <div>
-                        <input
-                          type="text"
-                          className={`${Styles.input} p-1 text-white w-100`}
-                          placeholder="Enter your name"
-                          {...register("userName", {
-                            required: "Username is required",
-                          })}
-                        />
+                        <div className={`${Styles.input} d-flex`}>
+                          <input
+                            type={visiblePassword ? "text" : "password"}
+                            className={`${Styles.input1} p-1 text-white w-100 z-0`}
+                            placeholder="Enter your Password"
+                            {...register("password", {
+                              required: "password is required",
+                            })}
+                          />
+                          <span
+                            onClick={() => setVisiblePassword(!visiblePassword)}
+                            className={`${Styles.passEye} text-white`}
+                          >
+                            {visiblePassword ? (
+                              <i className="fa-regular fa-eye  "></i>
+                            ) : (
+                              <i className="fa-regular fa-eye-slash "></i>
+                            )}
+                          </span>
+                        </div>
+                        {errors.password && <p className='alert alert-danger mt-2'>{(errors.password as FieldError).message}</p>}
                       </div>
-                      {errors.userName && <p className='alert alert-danger mt-2'>{(errors.userName as FieldError).message}</p>}
-                    </div>
-                    <div className="col md-6">
-                      <label className={`${Styles.textGold}`}>E-mail</label>
-                      <div>
-                        <input
-                          type="text"
-                          className={`${Styles.input} p-1 text-white w-100`}
-                          placeholder="Enter your email"
-                          {...register("email", {
-                            required: "email is required",
-                          })}
-                        />
+                      <div className="col md-6">
+                        <label className={`${Styles.textGold}`}>
+                          Confirm Password
+                        </label>
+                        <div className={`${Styles.input} d-flex`}>
+                          <input
+                            type={visiblePasswordConfirm ? "text" : "password"}
+                            className={`${Styles.input1} p-1 text-white w-100 z-0`}
+                            placeholder="Confirm New Password"
+                            {...register("confirmPassword", {
+                              required: "confirm Password is required",
+                              validate: (value) =>
+                                value === password.current ||
+                                "The passwords do not match",
+                            })}
+                          />
+                          <span
+                            onClick={() => setVisiblePasswordConfirm(!visiblePasswordConfirm)}
+                            className={`${Styles.passEye} text-white`}
+                          >
+                            {visiblePasswordConfirm ? (
+                              <i className="fa-regular fa-eye  "></i>
+                            ) : (
+                              <i className="fa-regular fa-eye-slash "></i>
+                            )}
+                          </span>
+                        </div>
+                        {errors.confirmPassword && <p className='alert alert-danger mt-2'>{(errors.confirmPassword as FieldError).message}</p>}
                       </div>
-                      {errors.email && <p className='alert alert-danger mt-2'>{(errors.email as FieldError).message}</p>}
                     </div>
-                    <div className="col-md-6">
-                      <label className={`${Styles.textGold}`}>Country</label>
-                      <div>
-                        <input
-                          type="text"
-                          className={`${Styles.input} p-1 text-white w-100`}
-                          placeholder="Enter your Country"
-                          {...register("country", {
-                            required: "country is required",
-                          })}
-                        />
-                      </div>
-                      {errors.country && <p className='alert alert-danger mt-2'>{(errors.country as FieldError).message}</p>}
+                    <div className="text-center">
+                      <button
+                        disabled={loading}
+                        className={`btn ${styles.btn_main}`}
+                      >
+                        {loading ? (
+                          <i className="fa-solid fa-spinner fa-spin"></i>
+                        ) : (
+                          "Save"
+                        )}
+                      </button>
                     </div>
-                    <div className="col md-6">
-                      <label className={`${Styles.textGold}`}>
-                        Phone Number
-                      </label>
-                      <div>
-                        <input
-                          type="number"
-                          className={`${Styles.input} p-1 text-white w-100`}
-                          placeholder="Enter your Phone Number"
-                          {...register("phoneNumber", {
-                            required: "phoneNumber is required",
-                          })}
-                        />
-                      </div>
-                      {errors.phoneNumber && <p className='alert alert-danger mt-2'>{(errors.phoneNumber as FieldError).message}</p>}
-                    </div>
-                    <div className="col-md-6">
-                      <label className={`${Styles.textGold}`}>Password</label>
-                      
-                      <div className={`${Styles.input} d-flex`}>
-                        <input
-                          type={visible ? "text" : "password"}
-                          className={`${Styles.input1} p-1 text-white w-100 z-0`}
-                          placeholder="Enter your Password"
-                          {...register("password", {
-                            required: "password is required",
-                          })}
-                          
-                        />
-                        <span
-                          onClick={() => setVisible(!visible)}
-                          className={`${Styles.passEye} text-white  `}
-                        >
-                          {visible ? (
-                            <i className="fa-regular fa-eye  "></i>
-                          ) : (
-                            <i className="fa-regular fa-eye-slash "></i>
-                          )}
-                        </span>
-                      </div>
-                      {errors.password && <p className='alert alert-danger mt-2'>{(errors.password as FieldError).message}</p>}
-                    </div>
-                    <div className="col md-6">
-                      <label className={`${Styles.textGold}`}>
-                        Confirm Password
-                      </label>
-                      <div className={`${Styles.input} d-flex`}>
-                        <input
-                          type={visible ? "text" : "password"}
-                          className={`${Styles.input1} p-1 text-white w-100 z-0`}
-                          placeholder="Confirm New Password"
-                          {...register("confirmPassword", {
-                            required: "confirm Password is required",
-                            validate: (value) =>
-                              value === password.current ||
-                              "The passwords do not match",
-                          })}
-                        />
-                        <span
-                          onClick={() => setVisible(!visible)}
-                          className={`${Styles.passEye2} text-white `}
-                        >
-                          {visible ? (
-                            <i className="fa-regular fa-eye  "></i>
-                          ) : (
-                            <i className="fa-regular fa-eye-slash "></i>
-                          )}
-                        </span>
-                      </div>
-                      {errors.confirmPassword && <p className='alert alert-danger mt-2'>{(errors.confirmPassword as FieldError).message}</p>}
-                    </div>
-                  </div>
-                  <div className="text-center">
-                    <button className={`${Styles.btnGold} btn px-5 w-50 text-white rounded-pill p-2 my-4`}>
-                      Save
-                    </button>
-                  </div>
-                </form>
-              </div>
+                  </form>
+                </div>
               </AnimatedPage>
             </div>
           </div>
         </div>
       </div>
-  
+
     </>
   );
 }
