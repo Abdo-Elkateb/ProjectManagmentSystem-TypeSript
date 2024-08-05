@@ -7,7 +7,6 @@ import axios from "axios";
 import { useAuth } from "../../../Context/AuthContext";
 import { useToast } from "../../../Context/ToastContext";
 import AnimatedPage from "../../../AnimatedPage/AnimatedPage";
-import Transition from "../../../Tramsition/Transition";
 
 type AuthInputs = {
   email: string;
@@ -167,7 +166,7 @@ export default function Login() {
                       {loading ? (
                         <i className="fa-solid fa-spinner fa-spin"></i>
                       ) : (
-                         "Login"
+                        "Login"
                       )}
                     </button>
                   </form>
