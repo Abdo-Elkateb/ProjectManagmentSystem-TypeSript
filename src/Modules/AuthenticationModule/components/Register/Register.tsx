@@ -67,10 +67,10 @@ getToast("success","Registerd Successfully" );
     <>
       <div className={` ${Styles.authcontainer}  `}>
         <div className="container-fluid bg-blac">
-          <div className="row d-flex justify-content-center align-items-center bg-dange ">
+          <div className="row d-flex vh-100 justify-content-center align-items-center bg-dange ">
             <div className="col-md-7 bg-warnin ">
               <div className="text-center">
-                <img className="mt-4 mb-3" src={logo} alt="" />
+               <img src={logo} className={`w-50 mb-3`} alt="" />
               </div>
               <AnimatedPage>
             <div className={`  ${Styles.bgFormContainer} p-4 px-5 pt-5 `}>
