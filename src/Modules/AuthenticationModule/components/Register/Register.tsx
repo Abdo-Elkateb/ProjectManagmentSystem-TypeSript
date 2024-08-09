@@ -1,10 +1,9 @@
 import axios from "axios";
 import React, { useRef, useState } from "react";
-import { useForm ,SubmitHandler, FieldError} from "react-hook-form";
+import { useForm, SubmitHandler, FieldError } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
 import logo from "../../../../assets/images/PMS 3.png";
 import Styles from "./Register.module.css";
-
 import img from "../../../..//assets/images/8550fbcbe60cd242d12760784feff287.jpeg";
 import { useToast } from "../../../Context/ToastContext";
 import AnimatedPage from "../../../AnimatedPage/AnimatedPage";
@@ -44,7 +43,7 @@ export default function Register() {
     formData.append("confirmPassword", data.confirmPassword);
     return formData;
   };
-  const onSubmit: SubmitHandler<IFormInput> = async(data) =>  {
+  const onSubmit: SubmitHandler<IFormInput> = async (data) => {
     try {
       const registerFormData = appendToFormData(data);
 
@@ -54,11 +53,11 @@ export default function Register() {
       );
       console.log(response);
 
-getToast("success","Registerd Successfully" );
+      getToast("success", "Registerd Successfully");
       navigate("/verify");
-    } catch (error:any) {
-      
- 
+    } catch (error: any) {
+
+
       getToast("error", error.response.data.message);
     }
   };
@@ -73,169 +72,166 @@ getToast("success","Registerd Successfully" );
                 <img className="mt-4 mb-3" src={logo} alt="" />
               </div>
               <AnimatedPage>
-            <div className={`  ${Styles.bgFormContainer} p-4 px-5 pt-5 `}>
-                <h6 className="text-white">welcome to PMS</h6>
-                <h2 className={`${Styles.textGold}`}>
-                  <span className="text-decoration-underline">C</span>reate New
-                  Account
-                </h2>
-                <form onSubmit={handleSubmit(onSubmit)}>
-                  <div className="row py-3">
-                    <div className="text-center">
-                      <label htmlFor="file">
-                        <img
-                          className={`${Styles.profileImg}`}
-                          src={
-                            imgValue && imgValue.length > 0
-                            ? URL.createObjectURL(imgValue[0])
-                            : img
-                          }
-                          alt="profileImg"
-                        />
+                <div className={`  ${Styles.bgFormContainer} p-4 px-5 pt-5 `}>
+                  <h6 className="text-white">welcome to PMS</h6>
+                  <h2 className={`${Styles.textGold}`}>
+                    <span className="text-decoration-underline">C</span>reate New
+                    Account
+                  </h2>
+                  <form onSubmit={handleSubmit(onSubmit)}>
+                    <div className="row py-3">
+                      <div className="text-center">
+                        <label htmlFor="file">
+                          <img
+                            className={`${Styles.profileImg}`}
+                            src={
+                              imgValue && imgValue.length > 0
+                                ? URL.createObjectURL(imgValue[0])
+                                : img
+                            }
+                            alt="profileImg"
+                          />
 
-                        <i
-                          className={`${
-                            (Styles.profileIcon, Styles.textGold)
-                          } fa fa-camera position-absolute`}
-                        ></i>
-                      </label>
-                      <input
-                        type="file"
-                        className={`${Styles.file} `}
-                        id="file"
-                        {...register("profileImage", {
-                          required: "profileImage is required",
-                        })}
-                      />
-                    </div>
-                    {errors.profileImage && <p className='text-warning text-center mt-1'>{(errors.profileImage as FieldError).message}</p>}
-                    <div className="col-md-6">
-                      <label className={`${Styles.textGold}`}>Username</label>
-                      <div>
+                          <i
+                            className={`${(Styles.profileIcon, Styles.textGold)
+                              } fa fa-camera position-absolute`}
+                          ></i>
+                        </label>
                         <input
-                          type="text"
-                          className={`${Styles.input} p-1 text-white w-100`}
-                          placeholder="Enter your name"
-                          {...register("userName", {
-                            required: "Username is required",
+                          type="file"
+                          className={`${Styles.file} `}
+                          id="file"
+                          {...register("profileImage", {
+                            required: "profileImage is required",
                           })}
                         />
                       </div>
-                      {errors.userName && <p className='alert alert-danger mt-2'>{(errors.userName as FieldError).message}</p>}
-                    </div>
-                    <div className="col md-6">
-                      <label className={`${Styles.textGold}`}>E-mail</label>
-                      <div>
-                        <input
-                          type="text"
-                          className={`${Styles.input} p-1 text-white w-100`}
-                          placeholder="Enter your email"
-                          {...register("email", {
-                            required: "email is required",
-                          })}
-                        />
+                      {errors.profileImage && <p className='text-warning text-center mt-1'>{(errors.profileImage as FieldError).message}</p>}
+                      <div className="col-md-6">
+                        <label className={`${Styles.textGold}`}>Username</label>
+                        <div>
+                          <input
+                            type="text"
+                            className={`${Styles.input} p-1 text-white w-100`}
+                            placeholder="Enter your name"
+                            {...register("userName", {
+                              required: "Username is required",
+                            })}
+                          />
+                        </div>
+                        {errors.userName && <p className='alert alert-danger mt-2'>{(errors.userName as FieldError).message}</p>}
                       </div>
-                      {errors.email && <p className='alert alert-danger mt-2'>{(errors.email as FieldError).message}</p>}
-                    </div>
-                    <div className="col-md-6">
-                      <label className={`${Styles.textGold}`}>Country</label>
-                      <div>
-                        <input
-                          type="text"
-                          className={`${Styles.input} p-1 text-white w-100`}
-                          placeholder="Enter your Country"
-                          {...register("country", {
-                            required: "country is required",
-                          })}
-                        />
+                      <div className="col md-6">
+                        <label className={`${Styles.textGold}`}>E-mail</label>
+                        <div>
+                          <input
+                            type="text"
+                            className={`${Styles.input} p-1 text-white w-100`}
+                            placeholder="Enter your email"
+                            {...register("email", {
+                              required: "email is required",
+                            })}
+                          />
+                        </div>
+                        {errors.email && <p className='alert alert-danger mt-2'>{(errors.email as FieldError).message}</p>}
                       </div>
-                      {errors.country && <p className='alert alert-danger mt-2'>{(errors.country as FieldError).message}</p>}
-                    </div>
-                    <div className="col md-6">
-                      <label className={`${Styles.textGold}`}>
-                        Phone Number
-                      </label>
-                      <div>
-                        <input
-                          type="number"
-                          className={`${Styles.input} p-1 text-white w-100`}
-                          placeholder="Enter your Phone Number"
-                          {...register("phoneNumber", {
-                            required: "phoneNumber is required",
-                          })}
-                        />
+                      <div className="col-md-6">
+                        <label className={`${Styles.textGold}`}>Country</label>
+                        <div>
+                          <input
+                            type="text"
+                            className={`${Styles.input} p-1 text-white w-100`}
+                            placeholder="Enter your Country"
+                            {...register("country", {
+                              required: "country is required",
+                            })}
+                          />
+                        </div>
+                        {errors.country && <p className='alert alert-danger mt-2'>{(errors.country as FieldError).message}</p>}
                       </div>
-                      {errors.phoneNumber && <p className='alert alert-danger mt-2'>{(errors.phoneNumber as FieldError).message}</p>}
-                    </div>
-                    <div className="col-md-6">
-                      <label className={`${Styles.textGold}`}>Password</label>
-                      
-                      <div className={`${Styles.input} d-flex`}>
-                        <input
-                          type={visible ? "text" : "password"}
-                          className={`${Styles.input1} p-1 text-white w-100 z-0`}
-                          placeholder="Enter your Password"
-                          {...register("password", {
-                            required: "password is required",
-                          })}
-                          
-                        />
-                        <span
-                          onClick={() => setVisible(!visible)}
-                          className={`${Styles.passEye} text-white  `}
-                        >
-                          {visible ? (
-                            <i className="fa-regular fa-eye  "></i>
-                          ) : (
-                            <i className="fa-regular fa-eye-slash "></i>
-                          )}
-                        </span>
+                      <div className="col md-6">
+                        <label className={`${Styles.textGold}`}>
+                          Phone Number
+                        </label>
+                        <div>
+                          <input
+                            type="number"
+                            className={`${Styles.input} p-1 text-white w-100`}
+                            placeholder="Enter your Phone Number"
+                            {...register("phoneNumber", {
+                              required: "phoneNumber is required",
+                            })}
+                          />
+                        </div>
+                        {errors.phoneNumber && <p className='alert alert-danger mt-2'>{(errors.phoneNumber as FieldError).message}</p>}
                       </div>
-                      {errors.password && <p className='alert alert-danger mt-2'>{(errors.password as FieldError).message}</p>}
-                    </div>
-                    <div className="col md-6">
-                      <label className={`${Styles.textGold}`}>
-                        Confirm Password
-                      </label>
-                      <div className={`${Styles.input} d-flex`}>
-                        <input
-                          type={visible ? "text" : "password"}
-                          className={`${Styles.input1} p-1 text-white w-100 z-0`}
-                          placeholder="Confirm New Password"
-                          {...register("confirmPassword", {
-                            required: "confirm Password is required",
-                            validate: (value) =>
-                              value === password.current ||
-                              "The passwords do not match",
-                          })}
-                        />
-                        <span
-                          onClick={() => setVisible(!visible)}
-                          className={`${Styles.passEye2} text-white `}
-                        >
-                          {visible ? (
-                            <i className="fa-regular fa-eye  "></i>
-                          ) : (
-                            <i className="fa-regular fa-eye-slash "></i>
-                          )}
-                        </span>
+                      <div className="col-md-6">
+                        <label className={`${Styles.textGold}`}>Password</label>
+
+                        <div className={`${Styles.input} d-flex`}>
+                          <input
+                            type={visible ? "text" : "password"}
+                            className={`${Styles.input1} p-1 text-white w-100 z-0`}
+                            placeholder="Enter your Password"
+                            {...register("password", {
+                              required: "password is required",
+                            })}
+                          />
+                          <span
+                            onClick={() => setVisible(!visible)}
+                            className={`${Styles.passEye} text-white  `}
+                          >
+                            {visible ? (
+                              <i className="fa-regular fa-eye  "></i>
+                            ) : (
+                              <i className="fa-regular fa-eye-slash "></i>
+                            )}
+                          </span>
+                        </div>
+                        {errors.password && <p className='alert alert-danger mt-2'>{(errors.password as FieldError).message}</p>}
                       </div>
-                      {errors.confirmPassword && <p className='alert alert-danger mt-2'>{(errors.confirmPassword as FieldError).message}</p>}
+                      <div className="col md-6">
+                        <label className={`${Styles.textGold}`}>
+                          Confirm Password
+                        </label>
+                        <div className={`${Styles.input} d-flex`}>
+                          <input
+                            type={visible ? "text" : "password"}
+                            className={`${Styles.input1} p-1 text-white w-100 z-0`}
+                            placeholder="Confirm New Password"
+                            {...register("confirmPassword", {
+                              required: "confirm Password is required",
+                              validate: (value) =>
+                                value === password.current ||
+                                "The passwords do not match",
+                            })}
+                          />
+                          <span
+                            onClick={() => setVisible(!visible)}
+                            className={`${Styles.passEye2} text-white `}
+                          >
+                            {visible ? (
+                              <i className="fa-regular fa-eye"></i>
+                            ) : (
+                              <i className="fa-regular fa-eye-slash"></i>
+                            )}
+                          </span>
+                        </div>
+                        {errors.confirmPassword && <p className='alert alert-danger mt-2'>{(errors.confirmPassword as FieldError).message}</p>}
+                      </div>
                     </div>
-                  </div>
-                  <div className="text-center">
-                    <button className={`${Styles.btnGold} btn px-5 w-50 text-white rounded-pill p-2 my-4`}>
-                      Save
-                    </button>
-                  </div>
-                </form>
-              </div>
+                    <div className="text-center">
+                      <button className={`${Styles.btnGold} btn px-5 w-50 text-white rounded-pill p-2 my-4`}>
+                        Save
+                      </button>
+                    </div>
+                  </form>
+                </div>
               </AnimatedPage>
             </div>
           </div>
         </div>
       </div>
-  
     </>
   );
 }

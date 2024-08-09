@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useAuth } from "../../../Context/AuthContext";
 import { useNavigate } from "react-router-dom";
-import { Modal } from 'react-bootstrap';
+import { Modal, Navbar } from 'react-bootstrap';
 import { Sidebar, Menu, MenuItem } from 'react-pro-sidebar';
 import { Link } from 'react-router-dom';
 
@@ -42,7 +42,8 @@ export default function SideBar() {
   const updateCollapsedWidth = () => {
     const width = window.innerWidth;
     if (width <= 576) {
-      setCollapsedWidth("60px");
+      setCollapsedWidth("0px");
+      <Navbar/>
     } else if (width <= 768) {
       setCollapsedWidth("80px");
     } else if (width <= 992) {

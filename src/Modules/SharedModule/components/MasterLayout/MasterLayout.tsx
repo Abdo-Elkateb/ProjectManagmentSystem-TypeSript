@@ -8,7 +8,7 @@ export default function MasterLayout() {
   return (
 <>
       <Navbar/>
- <div className={`${Styles.masterMain}`}>
+ <div className={`${Styles.masterMain} d-flex`}>
         <div>
           <SideBar/>
         </div>

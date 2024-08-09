@@ -152,7 +152,7 @@ export default function Dashboard() {
         <div>
           <div className={`${Styles.textPadding} container-fluid `}>
          <div className={`${Styles.task} row `}>
-              <div className="col-md-5 bg-danger rounded-2 p-3 my-2 dark-tabel">
+              <div className="col-md-5 rounded-2 p-3 my-2 dark-tabel">
                 <b className="dark-p">Tasks</b>
                 <p className="text-muted dark-p">
                   Number of Projects that have Tasks in Progress{" "}

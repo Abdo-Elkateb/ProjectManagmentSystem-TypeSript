@@ -11,57 +11,65 @@ import styles from "../MasterLayout/MasterLayout.module.css"
 import DarkModeToggle from "react-dark-mode-toggle";
 import { useState, useEffect } from "react";
 import DarkMood from '../../../DarkMood/DarkMood';
+import SideBar from '../SideBar/SideBar';
+import SideBarMobile from '../SideBar/SideBarMobile';
 export default function CustomNavbar() {
   const { loginUser } = useAuth();
 
   return (
     <>
       <Navbar expand="md" className={`${styles.nav} p-1 shadow-sm navber-darkmood`}>
-      <Container>
-        
-        <Navbar.Brand>
-            <img src={navLogo} className='w-na bg-dange' alt="" />
-        </Navbar.Brand>
-       
-        <Navbar.Toggle aria-controls="basic-navbar-nav" />
-          
-        <Navbar.Collapse id="basic-navbar-nav" className='bg-dange'>
-          <Nav className="text-center ms-md-auto d-flex gap-md-4 bg-blac py-3 py-md-0">
+        <Container>
+
           <Navbar.Brand>
-            <DarkMood/>
+            <img src={navLogo} className='w-na bg-dange' alt="" />
           </Navbar.Brand>
-            <Nav.Link className='d-none d-md-flex d-flex align-items-center justify-content-center justify-content-lg-start p-3 p-md-0 mb-3 mb-md-0 me-md- rounded-4'>
-                
-              <i className={`fa-solid fa-bell ${navStyle.mainColor}`}></i>
 
-            </Nav.Link>
-            
-            <div className="line border border-1"></div>
+          <Navbar.Toggle aria-controls="basic-navbar-nav" />
 
-            <Nav.Link className='p-3 p-md-0 d-flex  rounded-4 justify-content-center align-items-center gap-4 gap-md-3'>
+          <Navbar.Collapse id="basic-navbar-nav" className='bg-dange'>
+            <Nav className="text-center ms-md-auto d-flex gap-md-4 bg-blac py-3 py-md-0">
+              <Navbar.Brand>
+                {/* <DarkMood /> */}
+                {/* <SideBar/> */}
 
-              <div className='d-md-none'>
+              </Navbar.Brand>
+              <Navbar.Brand>
+                {/* <SideBar/> */}
+                <SideBarMobile/>
+              </Navbar.Brand>
+              <Nav.Link className='d-none d-md-flex d-flex align-items-center justify-content-center justify-content-lg-start p-3 p-md-0 mb-3 mb-md-0 me-md- rounded-4'>
+
+                <i className={`fa-solid fa-bell ${navStyle.mainColor}`}></i>
+
+              </Nav.Link>
+
+              <div className="line border border-1"></div>
+
+              <Nav.Link className='p-3 p-md-0 d-flex  rounded-4 justify-content-center align-items-center gap-4 gap-md-3'>
+
+                <div className='d-md-none'>
                   <i className={`fa-solid fa-bell ${navStyle.mainColor}`}></i>
-              </div>
+                </div>
 
-              <div className={`overflow-hidden rounded-circle ${navStyle.navImg}`}>
+                <div className={`overflow-hidden rounded-circle ${navStyle.navImg}`}>
                   <img src={navImg} className='w-100' alt="" />
-              </div>
+                </div>
 
-              <div >
-                <p className={`${navStyle.fs} text-start text-black fw-semibold  dark-p`}>{loginUser?.userName}</p>
-                <p className={`${navStyle.fs} text-muted fst-italic  dark-p`}>{loginUser?.userEmail}</p>
-              </div>
+                <div >
+                  <p className={`${navStyle.fs} text-start text-black fw-semibold  dark-p`}>{loginUser?.userName}</p>
+                  <p className={`${navStyle.fs} text-muted fst-italic  dark-p`}>{loginUser?.userEmail}</p>
+                </div>
 
-              <div>
-                <i className="fa-solid fa-chevron-down"></i>
-              </div>
-            </Nav.Link>
+                <div>
+                  <i className="fa-solid fa-chevron-down"></i>
+                </div>
+              </Nav.Link>
 
-          </Nav>
-        </Navbar.Collapse>
-          
-      </Container>
+            </Nav>
+          </Navbar.Collapse>
+
+        </Container>
       </Navbar>
     </>
   )
