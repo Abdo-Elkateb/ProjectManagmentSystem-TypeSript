@@ -11,6 +11,7 @@ import { AuthInterface } from "../../Interfaces/Interface";
 export const AuthContext = createContext<AuthInterface>({
   baseUrl: "",
   getUserData() {},
+  ChangePassword() {},
   loginUser: {
     exp: 0,
     iat: 0,
@@ -19,6 +20,7 @@ export const AuthContext = createContext<AuthInterface>({
     userEmail: "",
     userGroup: "",
     userId: 0,
+    
   },
   requestHeaders: {},
   setLoginUser() {},
@@ -42,6 +44,12 @@ export default function AuthContextProvider(props: PropsWithChildren) {
     const decodedToken: any = jwtDecode(encodedToken);
     setLoginUser(decodedToken);
   };
+  const ChangePassword = () => {
+    return (
+      
+      <h1>ChangePassword</h1>
+    )
+  }
 
   useEffect(() => {
     if (localStorage.getItem("token")) {
@@ -51,7 +59,7 @@ export default function AuthContextProvider(props: PropsWithChildren) {
 
   return (
     <AuthContext.Provider
-      value={{ getUserData, loginUser, setLoginUser, baseUrl, requestHeaders }}
+      value={{ getUserData, loginUser, setLoginUser, baseUrl, requestHeaders,ChangePassword }}
     >
       {props.children}
     </AuthContext.Provider>

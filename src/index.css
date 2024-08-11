@@ -53,6 +53,15 @@ input:focus{
   outline: 0;
 }
 /** =====================================><==================================== */
+.offcanvasControl {
+  background: #0E382F !important;
+}
+.icons {
+  margin-right: 5px;
+  /* font-size: 20px; */
+  color:#ef9b28;
+
+}
 .sidebar-container .ps-sidebar-container{
   color: white;
   background-color: #0E382F;

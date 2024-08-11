@@ -12,9 +12,29 @@ import DarkModeToggle from "react-dark-mode-toggle";
 import { useState, useEffect } from "react";
 import DarkMood from '../../../DarkMood/DarkMood';
 import SideBar from '../SideBar/SideBar';
+import SideBarStyle from '../SideBar/sidebar.module.css';
 import SideBarMobile from '../SideBar/SideBarMobile';
+import { Link } from 'react-router-dom';
 export default function CustomNavbar() {
-  const { loginUser } = useAuth();
+  let [collapsedWidth, setCollapsedWidth] = useState("0px");
+
+  const updateCollapsedWidth = () => {
+    const width = window.innerWidth;
+    if (width <= 576) {
+      setCollapsedWidth("100%");
+    } else if (width <= 768) {
+      setCollapsedWidth("80px");
+
+    }
+  };
+
+  useEffect(() => {
+    updateCollapsedWidth();
+    window.addEventListener('resize', updateCollapsedWidth);
+    return () => window.removeEventListener('resize', updateCollapsedWidth);
+  }, []);
+
+  const { loginUser,ChangePassword } = useAuth();
 
   return (
     <>
@@ -23,20 +43,31 @@ export default function CustomNavbar() {
 
           <Navbar.Brand>
             <img src={navLogo} className='w-na bg-dange' alt="" />
+            
           </Navbar.Brand>
 
-          <Navbar.Toggle aria-controls="basic-navbar-nav" />
+          {/* <Navbar.Toggle aria-controls="basic-navbar-nav" /> */}
+          <div className={SideBarStyle.sidebarMobile}>
+            <nav className="navbar bg-body-tertiary fixed-top">
+              <div className="container-fluid">
+                <Navbar.Brand>
+                  <img src={navLogo} className='w-na bg-dange' alt="" />
+                  
+                </Navbar.Brand>
+                <DarkMood />
+                <SideBarMobile/>
+              </div>
+            </nav>
+          </div>
+
+
 
           <Navbar.Collapse id="basic-navbar-nav" className='bg-dange'>
             <Nav className="text-center ms-md-auto d-flex gap-md-4 bg-blac py-3 py-md-0">
               <Navbar.Brand>
-                {/* <DarkMood /> */}
                 {/* <SideBar/> */}
-
-              </Navbar.Brand>
-              <Navbar.Brand>
-                {/* <SideBar/> */}
-                <SideBarMobile/>
+                <DarkMood />
+                {/* <SideBarMobile/> */}
               </Navbar.Brand>
               <Nav.Link className='d-none d-md-flex d-flex align-items-center justify-content-center justify-content-lg-start p-3 p-md-0 mb-3 mb-md-0 me-md- rounded-4'>
 
@@ -57,14 +88,17 @@ export default function CustomNavbar() {
                 </div>
 
                 <div >
+                  
                   <p className={`${navStyle.fs} text-start text-black fw-semibold  dark-p`}>{loginUser?.userName}</p>
                   <p className={`${navStyle.fs} text-muted fst-italic  dark-p`}>{loginUser?.userEmail}</p>
+          
                 </div>
 
                 <div>
                   <i className="fa-solid fa-chevron-down"></i>
                 </div>
               </Nav.Link>
+              
 
             </Nav>
           </Navbar.Collapse>
