@@ -151,12 +151,13 @@ export default function Dashboard() {
       {loginUser?.userGroup == "Manager" ? (
         <div>
           <div className={`${Styles.textPadding} container-fluid `}>
-            <div className="row">
-              <div className="col-md-5 bg-white rounded-2 p-3 my-2 dark-tabel">
+         <div className={`${Styles.task} row `}>
+              <div className="col-md-5 rounded-2 p-3 my-2 dark-tabel">
                 <b className="dark-p">Tasks</b>
                 <p className="text-muted dark-p">
                   Number of Projects that have Tasks in Progress{" "}
                 </p>
+
                 <div className="row g-2 mt-4">
                   <div
                     className={`${Styles.bgProgress} col-md-3 mx-1 rounded-4 p-2`}

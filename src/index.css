@@ -39,6 +39,10 @@ w-40{
   /* background-image: linear-gradient(rgba(14, 56, 47), rgba(0, 0, 0)) */
 
 }
+.master {
+  background: red;
+  display: none;
+}
 .font-main{
   font-family: "Montserrat", sans-serif;
 }
@@ -49,6 +53,15 @@ input:focus{
   outline: 0;
 }
 /** =====================================><==================================== */
+.offcanvasControl {
+  background: #0E382F !important;
+}
+.icons {
+  margin-right: 5px;
+  /* font-size: 20px; */
+  color:#ef9b28;
+
+}
 .sidebar-container .ps-sidebar-container{
   color: white;
   background-color: #0E382F;
@@ -61,7 +74,7 @@ input:focus{
     transition: all 0.15s;
   }
   & .ps-menu-button:hover{
-    background-color: #00924D1A;
+    background-color: #92002c1a;
   }
 }
 .sidebar-container .collapser{
@@ -76,6 +89,8 @@ input:focus{
 }
 .sidebar-container .icon-container{
   transition: transform 0.5s ease;
+  background-color:#ef9b28;
+
 }
 .ps-collapsed .ps-menu-button{
   padding-left: 12px !important;

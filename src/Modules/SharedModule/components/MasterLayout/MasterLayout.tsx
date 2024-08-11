@@ -8,11 +8,11 @@ export default function MasterLayout() {
   return (
 <>
       <Navbar/>
-      <div className="d-flex">
+ <div className={`${Styles.masterMain} d-flex`}>
         <div>
           <SideBar/>
         </div>
-        <div className={`${Styles.greybackground} w-100 overflow-aut p-2 p-md-3 darkMood-MasterLayout`}>
+        <div className={`${Styles.greybackground} w-100 overflow-aut p-1 p-md-3 darkMood-MasterLayout`}>
           <Outlet/>
         </div>
       </div>

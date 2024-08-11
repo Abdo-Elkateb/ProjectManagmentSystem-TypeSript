@@ -14,6 +14,8 @@ export interface AuthInterface {
   baseUrl: string;
   requestHeaders: {};
   getUserData: () => void;
+  ChangePassword: {}
+
 }
 
 export interface ProjectInterface {
@@ -66,6 +68,13 @@ export interface TaskData {
   inProgress: number;
   done: number;
 }
+export interface ChangePass {
+    oldPassword: string;
+    newPassword: string;
+    confirmNewPassword: string;
+  }
+
+
 
 export interface ActiveUserData {
   activatedEmployeeCount: number;
