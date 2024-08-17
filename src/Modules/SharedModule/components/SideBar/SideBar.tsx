@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useAuth } from "../../../Context/AuthContext";
 import { useNavigate } from "react-router-dom";
-import { Modal, Navbar } from 'react-bootstrap';
+import { Modal } from 'react-bootstrap';
 import { Sidebar, Menu, MenuItem } from 'react-pro-sidebar';
 import { Link } from 'react-router-dom';
 
@@ -130,6 +130,8 @@ export default function SideBar() {
                 <i className="fa-solid fa-arrow-right"></i>
               </div>
             </MenuItem>
+
+            
 
             <MenuItem
               className='mt-4 mb-2'
@@ -304,9 +306,6 @@ export default function SideBar() {
           </Modal.Body>
         </Modal>
       </div>
-
-
-
 
     </>
   )

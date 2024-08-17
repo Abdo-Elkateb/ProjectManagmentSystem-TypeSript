@@ -6,6 +6,7 @@ type Props = {
     initial: string,
     animate: string,
     exit: string,
+    children: React.ReactNode;
 
 }
 

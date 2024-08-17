@@ -49,12 +49,10 @@ label {
   border: none;
   background-color: transparent;
   padding: 5px;
-
 }
 
 .inputLogin::placeholder {
   color: white;
-
 }
 
 
@@ -106,4 +104,14 @@ label {
 }
 .textGold:hover {
   color:#fff;
+}
+
+.BackHome {
+  background: #ef9b28;
+  width: 200px !important;
+  height:30px;
+  font-size: 20px;
+  position: absolute;
+  top:10%;
+  left: 0px;
 }

@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from "react";
 import { useAuth } from "../../../Context/AuthContext";
-import { useNavigate } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 import { Link } from 'react-router-dom';
+import Styles from "./sidebar.module.css"
 
 
 
@@ -14,9 +15,12 @@ import { useForm } from 'react-hook-form';
 import axios from 'axios';
 
 import { useToast } from "../../../Context/ToastContext";
+import ChangePass from "../ChangePass/ChangePass";
+import SideBar from "./SideBar";
 
 export default function SideBarMobile() {
-    const { setLoginUser, baseUrl, requestHeaders, loginUser,ChangePassword } = useAuth();
+
+    const { setLoginUser, baseUrl, requestHeaders, loginUser, ChangePassword } = useAuth();
     let { register, handleSubmit, formState: { errors }, watch, reset } = useForm();
     const { getToast } = useToast();
     const navigate = useNavigate();
@@ -53,6 +57,13 @@ export default function SideBarMobile() {
         window.addEventListener('resize', updateCollapsedWidth);
         return () => window.removeEventListener('resize', updateCollapsedWidth);
     }, []);
+
+    const makeSomeChamge = () => {
+        return (
+            <ChangePass />
+
+        )
+    }
 
     function logout() {
         localStorage.removeItem("token");
@@ -104,6 +115,7 @@ export default function SideBarMobile() {
     }
     return (
         <>
+
             <button className="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar" aria-label="Toggle navigation">
                 <span className="navbar-toggler-icon" />
             </button>
@@ -111,32 +123,52 @@ export default function SideBarMobile() {
                 <div className="offcanvas-header">
                     <button type="button" className="btn-close bg-light" data-bs-dismiss="offcanvas" aria-label="Close" />
                 </div>
-                <div className="offcanvas-body d-flex flex-column justify-content-center align-content-center vh-100">
-                    <ul className={SideBarStyle.sidebarMobileUl}>
+                <div className="offcanvas-body">
+                    <div className="d-flex w-100 h-100 justify-content-center align-items-center g-lg-2">
+                        <ul className="w-100 text-center">
+                            <li className={Styles.liSidebar}>
 
-                        <Link className={SideBarStyle.sidebarMobileLinkes} to="">
-                            <i className="fa-solid fa-house icons"></i>
-                            Home
-                        </Link>
-                        <Link className={SideBarStyle.sidebarMobileLinkes} to="users">
-                            <i className="fa-solid fa-user icons"></i>
-                            Users</Link>
-                        <Link className={SideBarStyle.sidebarMobileLinkes} to="projects">
-                            <i className="fa-solid fa-diagram-project icons"></i>
-                            Projects</Link>
-                        <Link className={SideBarStyle.sidebarMobileLinkes} to="tasks">
-                            <i className="fa-solid fa-list-check icons"></i>
-                            Tasks</Link>
-                        <Link className={SideBarStyle.sidebarMobileLinkes} to="users">
-                            {/* onClick={handleShow} */}
-                            <i className="fa-solid fa-lock icons"></i>
-                            Change Password</Link>
-                        <Link className={SideBarStyle.sidebarMobileLinkes} to="users">
-                            <i className="fa-solid fa-right-from-bracket icons"></i>
-                            Logout</Link>
-                    </ul>
+                                <NavLink to="">
+                                    <i className="fa-solid fa-house iconssidebar"></i>
+                                    Home</NavLink>
+
+                            </li>
+                            <li className={Styles.liSidebar}>
+                                <NavLink to="users">
+                                    <i className="fa-solid fa-user iconssidebar"></i>
+                                    Users</NavLink>
+                            </li>
+                            <li className={Styles.liSidebar}>
+                                <NavLink to="projects">
+                                    <i className="fa-solid fa-diagram-project iconssidebar"></i>
+                                    Projects</NavLink>
+                            </li>
+                            <li className={Styles.liSidebar}>
+                                <NavLink className={Styles.liSidebar} to="tasks">
+                                    <i className="fa-solid fa-list-check iconssidebar"></i>
+                                    Tasks</NavLink>
+                            </li>
+                            <li className={Styles.liSidebar}>
+                                <NavLink className={Styles.liSidebar} to="changePassword">
+                                    <i className="fa-solid fa-lock iconssidebar"></i>
+                                    Change Password</NavLink>
+                            </li>
+                            <li className={Styles.liSidebar}>
+                                <NavLink className={Styles.liSidebar} to="logout">
+                                    <i className="fa-solid fa-right-from-bracket iconssidebar"></i>
+                                    logout</NavLink>
+                            </li>
+
+                        </ul>
+
+
+
+
+                    </div>
+
 
                 </div>
+
             </div>
         </>
     )
