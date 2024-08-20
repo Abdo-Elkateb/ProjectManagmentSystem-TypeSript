@@ -34,6 +34,8 @@ a.active {
     transition: all .3s;
 
 }
+
+
 .w-fit {
   width: fit-content;
 }

@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useAuth } from "../../../Context/AuthContext";
 import { useNavigate } from "react-router-dom";
-import { Modal } from 'react-bootstrap';
+import { Modal, Navbar } from 'react-bootstrap';
 import { Sidebar, Menu, MenuItem } from 'react-pro-sidebar';
 import { Link } from 'react-router-dom';
 
@@ -17,8 +17,9 @@ import { useToast } from "../../../Context/ToastContext";
 
 export default function SideBar() {
 
-  const { setLoginUser, baseUrl, requestHeaders, loginUser } = useAuth();
-  let { register, handleSubmit, formState: { errors }, watch, reset } = useForm();
+  const { setLoginUser, baseUrl, requestHeaders, loginUser,logout } = useAuth();
+  let { register, handleSubmit, formState: { errors }, watch } = useForm();
+
   const { getToast } = useToast();
   const navigate = useNavigate();
   const [placeholder, setPlaceholder] = useState<Placeholders>({
@@ -58,11 +59,11 @@ export default function SideBar() {
     return () => window.removeEventListener('resize', updateCollapsedWidth);
   }, []);
 
-  function logout() {
-    localStorage.removeItem("token");
-    setLoginUser(null);
-    navigate("/login");
-  }
+  // function logout() {
+  //   localStorage.removeItem("token");
+  //   setLoginUser(null);
+  //   navigate("/login");
+  // }
 
   // ?============================================================================================
   interface PasswordState {
@@ -97,7 +98,6 @@ export default function SideBar() {
 
 
       getToast("success", response.data.message)
-      logout()
       console.log(data);
 
     }
@@ -130,8 +130,6 @@ export default function SideBar() {
                 <i className="fa-solid fa-arrow-right"></i>
               </div>
             </MenuItem>
-
-            
 
             <MenuItem
               className='mt-4 mb-2'
@@ -176,7 +174,10 @@ export default function SideBar() {
 
             <MenuItem
               className="mb-2"
-              onClick={logout}
+    
+                                    onClick={() => {
+                                        logout()
+                                    }}
               icon={<i className="fa-solid fa-circle-left"></i>}
             >
               Logout
@@ -306,6 +307,9 @@ export default function SideBar() {
           </Modal.Body>
         </Modal>
       </div>
+
+
+
 
     </>
   )

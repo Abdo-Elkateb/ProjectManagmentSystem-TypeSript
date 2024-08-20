@@ -40,25 +40,23 @@ export default function CustomNavbar() {
     <>
       <Navbar expand="md" className={`${styles.nav} p-1 shadow-sm navber-darkmood`}>
         <Container>
-          <Navbar.Brand>
-            <img src={navLogo} className='w-na bg-dange' alt="" />
-          
+          <Navbar.Brand className=''>
+            <img src={navLogo} className='w-na bg-dange mr-4' alt="" />
           </Navbar.Brand>
-
-          {/* <Navbar.Toggle aria-controls="basic-navbar-nav" /> */}
           <div className={SideBarStyle.sidebarMobile}>
             <nav className="navbar bg-body-tertiary fixed-top">
               <div className="container-fluid">
-                <Navbar.Brand>
+                  <SideBarMobile/>
+                               <Navbar.Brand>
                   <img src={navLogo} className='w-na bg-dange' alt="" />
                 </Navbar.Brand>
                 <DarkMood />
-                <SideBarMobile/>
+      
+          
               </div>
             </nav>
           </div>
-          {/*  */}
-
+  
           <Navbar.Collapse id="basic-navbar-nav" className='bg-dange'>
             <Nav className="text-center ms-md-auto d-flex gap-md-4 bg-blac py-3 py-md-0">
               <Navbar.Brand>
