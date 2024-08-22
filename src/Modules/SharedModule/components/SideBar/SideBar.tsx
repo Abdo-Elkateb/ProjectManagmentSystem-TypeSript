@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useRef } from "react";
+import React, { useEffect, useState } from "react";
 import { useAuth } from "../../../Context/AuthContext";
 import { useNavigate } from "react-router-dom";
 import { Modal, Navbar } from 'react-bootstrap';
@@ -16,22 +16,11 @@ import { useToast } from "../../../Context/ToastContext";
 
 
 export default function SideBar() {
+
+  const { setLoginUser, baseUrl, requestHeaders, loginUser } = useAuth();
+  let { register, handleSubmit, formState: { errors }, watch, reset } = useForm();
   const { getToast } = useToast();
   const navigate = useNavigate();
-  const timeoutRef = useRef<number>();
-
-  const { setLoginUser, baseUrl, requestHeaders, loginUser, logout } = useAuth();
-  let { register, handleSubmit, formState: { errors }, watch } = useForm();
-
-  function logOutFromDashborad() {
-    logout()
-    getToast("success", "Logout in Successfuly");
-    timeoutRef.current = setTimeout(() => {
-      navigate("/", { replace: true });
-    }, 4000);
-  }
-
-
   const [placeholder, setPlaceholder] = useState<Placeholders>({
     oldPassword: 'Enter your old password',
     newPassword: 'Enter your new password',
@@ -69,11 +58,11 @@ export default function SideBar() {
     return () => window.removeEventListener('resize', updateCollapsedWidth);
   }, []);
 
-  // function logout() {
-  //   localStorage.removeItem("token");
-  //   setLoginUser(null);
-  //   navigate("/login");
-  // }
+  function logout() {
+    localStorage.removeItem("token");
+    setLoginUser(null);
+    navigate("/login");
+  }
 
   // ?============================================================================================
   interface PasswordState {
@@ -108,6 +97,7 @@ export default function SideBar() {
 
 
       getToast("success", response.data.message)
+      logout()
       console.log(data);
 
     }
@@ -136,7 +126,7 @@ export default function SideBar() {
               onClick={handleCollapse}
             >
               <div className="icon-container bg-warnin p-2 rounded-3" style={isCollapse ? { transform: `scaleX(${iconRotation})` } :
-                { transform: `scaleX(${iconRotation})`, background: "#ef9b28" }}>
+               { transform: `scaleX(${iconRotation})`, background: "#ef9b28" }}>
                 <i className="fa-solid fa-arrow-right"></i>
               </div>
             </MenuItem>
@@ -184,10 +174,7 @@ export default function SideBar() {
 
             <MenuItem
               className="mb-2"
-
-              onClick={() => {
-                logOutFromDashborad()
-              }}
+              onClick={logout}
               icon={<i className="fa-solid fa-circle-left"></i>}
             >
               Logout

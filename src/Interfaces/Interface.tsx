@@ -14,8 +14,7 @@ export interface AuthInterface {
   baseUrl: string;
   requestHeaders: {};
   getUserData: () => void;
-  ChangePassword: {};
-  logout: {};
+  ChangePassword: {}
 
 }
 
@@ -72,11 +71,6 @@ export interface TaskData {
 export interface ChangePass {
     oldPassword: string;
     newPassword: string;
-    confirmNewPassword: string;
-  }
-  export interface logout {
-    localStorage: string;
-    setLoginUser: null | {};
     confirmNewPassword: string;
   }
 
