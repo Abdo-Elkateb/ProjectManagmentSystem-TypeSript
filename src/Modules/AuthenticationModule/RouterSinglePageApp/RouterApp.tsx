@@ -1,5 +1,5 @@
 import React from 'react'
-import { Route, Routes, useLocation } from 'react-router-dom'
+import { BrowserRouter, Route, Routes, useLocation } from 'react-router-dom'
 import AuthLayout from '../../SharedModule/components/AuthLayout/AuthLayout'
 import Login from '../components/Login/Login'
 import Register from '../components/Register/Register'
@@ -15,7 +15,6 @@ import TasksData from '../../TasksModule/components/TasksData/TasksData'
 import UsersList from '../../UsersModule/components/UsersList/UsersList'
 import TaskBoard from '../../TasksModule/components/TaskBoard/TaskBoard'
 import ResetPass from '../components/ResetPass/ResetPass'
-import ChangePass from '../components/ChangePass/ChangePass'
 
 export default function RouterApp() {
   const location = useLocation()
@@ -49,7 +48,6 @@ export default function RouterApp() {
               <Route path="tasksedit/:id" element={<TasksData />} />
               <Route path="users" element={<UsersList />} />
               <Route path="taskboard" element={<TaskBoard />} />
-              <Route path="changePassword" element={<ChangePass />} />
             </Route>
           </Routes>
   </>

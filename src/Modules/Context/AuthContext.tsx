@@ -7,14 +7,11 @@ import React, {
 } from "react";
 import { jwtDecode } from "jwt-decode";
 import { AuthInterface } from "../../Interfaces/Interface";
-import { useNavigate } from "react-router-dom";
-import { useToast } from "../Context/ToastContext";
 
 export const AuthContext = createContext<AuthInterface>({
   baseUrl: "",
-  getUserData() { },
-  ChangePassword() { },
-  logout() { },
+  getUserData() {},
+  ChangePassword() {},
   loginUser: {
     exp: 0,
     iat: 0,
@@ -23,29 +20,20 @@ export const AuthContext = createContext<AuthInterface>({
     userEmail: "",
     userGroup: "",
     userId: 0,
-
+    
   },
   requestHeaders: {},
-  setLoginUser() { },
+  setLoginUser() {},
 });
 
 export const useAuth = () => {
   return useContext(AuthContext);
 };
 {
-
+  /* TODO:Mostafa Any*/
 }
 export default function AuthContextProvider(props: PropsWithChildren) {
-    const [loginUser, setLoginUser] = useState(null);
-    // const navigate = useNavigate();
-    
-
-  function logout() {
-    localStorage.removeItem("token");
-    setLoginUser(null);
-  }
-
-
+  const [loginUser, setLoginUser] = useState(null);
   let requestHeaders = {
     Authorization: `Bearer ${localStorage.getItem("token")}`,
   };
@@ -58,22 +46,20 @@ export default function AuthContextProvider(props: PropsWithChildren) {
   };
   const ChangePassword = () => {
     return (
-
-      alert("ChangePassword")
+      
+      <h1>ChangePassword</h1>
     )
   }
-
 
   useEffect(() => {
     if (localStorage.getItem("token")) {
       getUserData();
     }
-
   }, []);
 
   return (
     <AuthContext.Provider
-      value={{ getUserData, loginUser, setLoginUser, baseUrl, requestHeaders, ChangePassword, logout }}
+      value={{ getUserData, loginUser, setLoginUser, baseUrl, requestHeaders,ChangePassword }}
     >
       {props.children}
     </AuthContext.Provider>
