@@ -31,6 +31,7 @@ export default function SideBar() {
     }, 4000);
   }
 
+checkIfManger()
 
   const [placeholder, setPlaceholder] = useState<Placeholders>({
     oldPassword: 'Enter your old password',

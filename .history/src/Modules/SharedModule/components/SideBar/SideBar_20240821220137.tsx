@@ -24,12 +24,13 @@ export default function SideBar() {
   let { register, handleSubmit, formState: { errors }, watch } = useForm();
 
   function logOutFromDashborad() {
-    logout()
+    logout
     getToast("success", "Logout in Successfuly");
     timeoutRef.current = setTimeout(() => {
       navigate("/", { replace: true });
     }, 4000);
   }
+
 
 
   const [placeholder, setPlaceholder] = useState<Placeholders>({

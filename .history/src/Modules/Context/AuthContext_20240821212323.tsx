@@ -67,6 +67,7 @@ export default function AuthContextProvider(props: PropsWithChildren) {
   useEffect(() => {
     if (localStorage.getItem("token")) {
       getUserData();
+      logout()
     }
 
   }, []);
