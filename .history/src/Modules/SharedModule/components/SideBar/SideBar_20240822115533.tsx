@@ -31,6 +31,14 @@ export default function SideBar() {
     }, 4000);
   }
 
+function checkIfManger() {
+
+      console.log("checkIfManger")
+      console.log(loginUser)
+    
+  
+}
+checkIfManger()
 
   const [placeholder, setPlaceholder] = useState<Placeholders>({
     oldPassword: 'Enter your old password',

@@ -1,7 +1,8 @@
-import React, { useContext, useEffect, useState } from "react";
+import React, { useContext, useEffect, useState, useRef } from "react";
 import { useAuth } from "../../../Context/AuthContext";
 import { NavLink, useNavigate } from "react-router-dom";
 import Styles from "./sidebar.module.css"
+import { useToast } from "../../../Context/ToastContext";
 
 
 
@@ -9,14 +10,22 @@ import Styles from "./sidebar.module.css"
 
 export default function SideBarMobile() {
 
+    const { logout } = useAuth();
 
+    const { getToast } = useToast();
 
-  const { logout } = useAuth();
+    const timeoutRef = useRef<number>();
 
+    const navigate = useNavigate();
 
-
-
-
+    function logOutFromDashborad() {
+        if (logout) {
+            getToast("success", "Logout in Successfuly");
+            timeoutRef.current = setTimeout(() => {
+                navigate("/login", { replace: true });
+            }, 4000);
+        }
+    }
 
     return (
         <>
@@ -59,15 +68,15 @@ export default function SideBarMobile() {
                                     <i className="fa-solid fa-lock iconssidebar"></i>
                                     Change Password</NavLink>
                             </li>
-            
-                                    <button
-                                    className="btn btn-danger"
-                             onClick={() => {
-                                        logout()
-                                    }}
-                                >
-                                    Clear All cart
-                                </button>
+
+                            <li
+                                className={Styles.liSidebar}
+                                onClick={() => {
+                                    logOutFromDashborad()
+                                }}
+                            >
+                                Logout
+                            </li>
 
                         </ul>
 
