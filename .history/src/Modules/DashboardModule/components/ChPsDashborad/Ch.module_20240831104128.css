@@ -1,0 +1,12 @@
+.changePass {
+    /* background: red !important; */
+    /* display: none; */
+
+}
+
+@media screen and (min-width: 768px) {
+    .changePass {
+        display: none;
+
+    }
+}
