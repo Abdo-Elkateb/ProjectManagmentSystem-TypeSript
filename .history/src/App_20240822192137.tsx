@@ -15,6 +15,8 @@ function App() {
 
   return (
 
+
+
     // <AnimatePresence exitBeforeEnter>
     <AuthContextProvider>
       <div className="App">
@@ -22,6 +24,8 @@ function App() {
         <AnimatePresence>
           <RouterApp/>
         </AnimatePresence>
+
+
       </div>
     </AuthContextProvider>
     // </AnimatePresence>

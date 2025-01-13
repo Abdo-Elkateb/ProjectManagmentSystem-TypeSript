@@ -22,6 +22,8 @@ function App() {
         <AnimatePresence>
           <RouterApp/>
         </AnimatePresence>
+
+
       </div>
     </AuthContextProvider>
     // </AnimatePresence>
